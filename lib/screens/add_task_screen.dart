@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inti/intl.dart'
+import 'package:intl/intl.dart';
 
 class AddTaskScreen extends StatefulWidget {
   @override
@@ -26,7 +26,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       setState(() {
         _date = date;
       });
-      _dateController.text = _date.toString();
+      _dateController.text = _dateFormatter.format(date);
     }
   }
 
