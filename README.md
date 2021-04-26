@@ -1,4 +1,6 @@
-# class_organizer
+# :pencil: Class Organizer
+
+A flutter app to organize online classes
 
 A new Flutter project.
 
