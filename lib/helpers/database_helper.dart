@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:todo/models/task_model.dart';
@@ -35,7 +34,7 @@ class DatabaseHelper {
     Directory dir = await getApplicationDocumentsDirectory();
     String path = dir.path + 'todo_list.db';
     final todoListDb =
-        await openDatabase(path, version: 1, onCreate: _createDb);
+        await openDatabase(path, version: 2, onCreate: _createDb);
     return todoListDb;
   }
 

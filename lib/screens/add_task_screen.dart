@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:todo/helpers/database_helper.dart';
 import 'package:todo/models/task_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AddTaskScreen extends StatefulWidget {
   final Task task;
@@ -43,11 +44,15 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   _submit() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      print('$_title $_date $_priority $_link');
+      print('$_title $_date $_link $_priority');
 
       //insert the task to our user's database
-      Task task =
-          Task(title: _title, date: _date, priority: _priority, link: _link);
+      Task task = Task(
+        title: _title,
+        date: _date,
+        link: _link,
+        priority: _priority,
+      );
       if (widget.task == null) {
         task.status = 0;
         DatabaseHelper.instance.insertTask(task);
@@ -68,6 +73,18 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     Navigator.pop(context);
   }
 
+  Future<void> launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: false,
+        forceWebView: false,
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -76,8 +93,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     if (widget.task != null) {
       _title = widget.task.title;
       _date = widget.task.date;
-      _priority = widget.task.priority;
       _link = widget.task.link;
+      _priority = widget.task.priority;
     }
     _dateController.text = _dateFormat.format(_date);
   }
@@ -113,10 +130,33 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 SizedBox(
                   height: 20,
                 ),
+                widget.task == null
+                    ? SizedBox.shrink()
+                    : Container(
+                        margin: EdgeInsets.symmetric(vertical: 0),
+                        height: 50,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor,
+                            borderRadius: BorderRadius.circular(30)),
+                        child: FlatButton(
+                          onPressed: () => launchURL(_link),
+                          child: Text(
+                            'Go to Class Link -> $_link',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                SizedBox(
+                  height: 40,
+                ),
                 Text(widget.task == null ? 'Add Class' : 'Update Class',
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 40,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold)),
                 SizedBox(
                   height: 10,
