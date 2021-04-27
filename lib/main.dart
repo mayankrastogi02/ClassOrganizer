@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Class Organizer',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primaryColor: Color(0xFF444974),
+        //primarySwatch: Colors.red,
       ),
       home: TodoListScreen(),
     );

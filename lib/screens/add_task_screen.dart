@@ -18,6 +18,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   final _formKey = GlobalKey<FormState>();
   String _title = '';
   String _priority = '';
+  String _link = '';
   DateTime _date = DateTime.now();
 
   TextEditingController _dateController = TextEditingController();
@@ -42,10 +43,11 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   _submit() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      print('$_title $_date $_priority');
+      print('$_title $_date $_priority $_link');
 
       //insert the task to our user's database
-      Task task = Task(title: _title, date: _date, priority: _priority);
+      Task task =
+          Task(title: _title, date: _date, priority: _priority, link: _link);
       if (widget.task == null) {
         task.status = 0;
         DatabaseHelper.instance.insertTask(task);
@@ -75,6 +77,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       _title = widget.task.title;
       _date = widget.task.date;
       _priority = widget.task.priority;
+      _link = widget.task.link;
     }
     _dateController.text = _dateFormat.format(_date);
   }
@@ -110,7 +113,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Text(widget.task == null ? 'Add Task' : 'Update Task',
+                Text(widget.task == null ? 'Add Class' : 'Update Class',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 40,
@@ -134,7 +137,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10))),
                           validator: (input) => input.trim().isEmpty
-                              ? "Please enter a task"
+                              ? "Please enter a class name"
                               : null,
                           onSaved: (input) => _title = input,
                           initialValue: _title,
@@ -160,37 +163,56 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                         ),
                       ),
                       Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 20,
-                          ),
-                          child: DropdownButtonFormField(
-                            isDense: true,
-                            items: _priorities.map((String priority) {
-                              return DropdownMenuItem(
-                                  value: priority,
-                                  child: Text(
-                                    priority,
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 18),
-                                  ));
-                            }).toList(),
-                            style: TextStyle(fontSize: 18),
-                            decoration: InputDecoration(
-                                labelText: 'Priority',
-                                labelStyle: TextStyle(fontSize: 18),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                            validator: (input) => _priority == null
-                                ? "Please Select a priority level"
-                                : null,
-                            onChanged: (value) {
-                              setState(() {
-                                _priority = value;
-                              });
-                            },
-                          )),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 20,
+                        ),
+                        child: TextFormField(
+                          style: TextStyle(fontSize: 18),
+                          decoration: InputDecoration(
+                              labelText: 'Link',
+                              labelStyle: TextStyle(fontSize: 18),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10))),
+                          validator: (input) => input.trim().isEmpty
+                              ? "Please enter a class link"
+                              : null,
+                          onSaved: (input) => _link = input,
+                          initialValue: _link,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 20,
+                        ),
+                        child: DropdownButtonFormField(
+                          isDense: true,
+                          items: _priorities.map((String priority) {
+                            return DropdownMenuItem(
+                                value: priority,
+                                child: Text(
+                                  priority,
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 18),
+                                ));
+                          }).toList(),
+                          style: TextStyle(fontSize: 18),
+                          decoration: InputDecoration(
+                              labelText: 'Priority',
+                              labelStyle: TextStyle(fontSize: 18),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10))),
+                          validator: (input) => _priority == null
+                              ? "Please Select a priority level"
+                              : null,
+                          onChanged: (value) {
+                            setState(() {
+                              _priority = value;
+                            });
+                          },
+                        ),
+                      ),
                       Container(
-                        margin: EdgeInsets.symmetric(vertical: 20),
+                        margin: EdgeInsets.symmetric(vertical: 10),
                         height: 50,
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -210,7 +232,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       widget.task == null
                           ? SizedBox.shrink()
                           : Container(
-                              margin: EdgeInsets.symmetric(vertical: 20),
+                              margin: EdgeInsets.symmetric(vertical: 0),
                               height: 50,
                               width: double.infinity,
                               decoration: BoxDecoration(

@@ -14,14 +14,15 @@ class DatabaseHelper {
   String colId = 'id';
   String colTitle = 'title';
   String colDate = 'date';
+  String colLink = 'link';
   String colPriority = 'priority';
   String colStatus = 'status';
 
   // task tables
-  // Id | Title | Date | Priority | Status
-  //  0     ''     ''       ''        ''
-  //  2     ''     ''       ''        ''
-  //  3     ''     ''       ''        ''
+  // Id | Title | Date | Link | Priority | Status
+  //  0     ''     ''     ''        ''
+  //  2     ''     ''     ''        ''
+  //  3     ''     ''     ''        ''
 
   Future<Database> get db async {
     if (_db == null) {
@@ -40,7 +41,7 @@ class DatabaseHelper {
 
   void _createDb(Database db, int version) async {
     await db.execute(
-        'CREATE TABLE $taskTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colTitle TEXT, $colDate TEXT, $colPriority TEXT, $colStatus INTEGER)');
+        'CREATE TABLE $taskTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colTitle TEXT, $colDate TEXT, $colLink TEXT, $colPriority TEXT, $colStatus INTEGER)');
   }
 
   Future<List<Map<String, dynamic>>> getTaskMapList() async {

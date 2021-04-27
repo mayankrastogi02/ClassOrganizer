@@ -1,0 +1,14 @@
+gradient: LinearGradient(
+          colors: [Colors.purple, Colors.red],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+        ),
+
+
+
+ decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30.0),
+                    topRight: Radius.circular(30.0),
+                  )),

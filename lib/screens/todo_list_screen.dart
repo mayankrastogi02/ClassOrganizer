@@ -28,43 +28,56 @@ class _TodoListScreenState extends State<TodoListScreen> {
 
   Widget _buildTask(Task task) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
-      child: Column(
-        children: [
-          ListTile(
-            title: Text(
-              task.title,
-              style: TextStyle(
-                  fontSize: 18,
-                  decoration: task.status == 0
-                      ? TextDecoration.none
-                      : TextDecoration.lineThrough),
-            ),
-            subtitle: Text('${_dateFormat.format(task.date)} ${task.priority}',
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5.0),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(24.0)),
+          gradient: LinearGradient(
+            colors: [Colors.purple, Colors.red],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ),
+        ),
+        child: Column(
+          children: [
+            ListTile(
+              title: Text(
+                task.title,
                 style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 18,
+                    color: Colors.white,
                     decoration: task.status == 0
                         ? TextDecoration.none
-                        : TextDecoration.lineThrough)),
-            trailing: Checkbox(
-                onChanged: (value) {
-                  task.status = value ? 1 : 0;
-                  DatabaseHelper.instance.updateTask(task);
-                  _updateTaskList();
-                  print(value);
-                },
-                activeColor: Theme.of(context).primaryColor,
-                value: task.status == 1 ? true : false),
-            onTap: () => Navigator.push(
-                context,
-                CupertinoPageRoute(
-                    builder: (_) => AddTaskScreen(
-                          task: task,
-                          updateTaskList: _updateTaskList,
-                        ))),
-          ),
-          Divider()
-        ],
+                        : TextDecoration.lineThrough),
+              ),
+              subtitle: Text(
+                  '${_dateFormat.format(task.date)} | ${task.priority}',
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey[300],
+                      decoration: task.status == 0
+                          ? TextDecoration.none
+                          : TextDecoration.lineThrough)),
+              trailing: Checkbox(
+                  onChanged: (value) {
+                    task.status = value ? 1 : 0;
+                    DatabaseHelper.instance.updateTask(task);
+                    _updateTaskList();
+                    print(value);
+                  },
+                  activeColor: Theme.of(context).primaryColor,
+                  value: task.status == 1 ? true : false),
+              onTap: () => Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                      builder: (_) => AddTaskScreen(
+                            task: task,
+                            updateTaskList: _updateTaskList,
+                          ))),
+            ),
+            Divider()
+          ],
+        ),
       ),
     );
   }
@@ -109,11 +122,12 @@ class _TodoListScreenState extends State<TodoListScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'My Task',
+                          'Classes',
                           style: TextStyle(
-                              fontSize: 40,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
+                            fontSize: 40,
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         SizedBox(
                           height: 10,
