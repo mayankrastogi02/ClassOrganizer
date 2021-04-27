@@ -1,4 +1,4 @@
-package com.example.class_organizer
+package com.example.todo
 
 import io.flutter.embedding.android.FlutterActivity
 
