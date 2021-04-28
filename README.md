@@ -24,7 +24,7 @@ This project is a starting point for a Flutter application.
      <li>Run main.dart
        <li>Enjoy!
          
-##Additional Information
+## Additional Information
 
 A few resources to get you started if this is your first Flutter project:
 
