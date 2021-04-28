@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:todo/helpers/database_helper.dart';
 import 'package:todo/models/task_model.dart';
 import 'package:todo/screens/add_task_screen.dart';
+import 'package:todo/screens/calendar_screen.dart';
 
 class TodoListScreen extends StatefulWidget {
   @override
@@ -118,29 +119,66 @@ class _TodoListScreenState extends State<TodoListScreen> {
                 if (i == 0) {
                   return Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Classes',
-                          style: TextStyle(
-                            fontSize: 40,
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.bold,
+                    child: Column(children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                'Classes',
+                                style: TextStyle(
+                                  fontSize: 40,
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          '$completedTaskCount of ${snapshot.data.length}',
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w600),
-                        )
-                      ],
-                    ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: Theme.of(context).primaryColor,
+                                      shape: BoxShape.circle),
+                                  child: IconButton(
+                                      color: Colors.black,
+                                      icon: Icon(
+                                        Icons.calendar_today_rounded,
+                                        color: Colors.white,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CalendarScreen()),
+                                        );
+                                      }),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Completed: $completedTaskCount of ${snapshot.data.length}',
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      )
+                    ]),
                   );
                 }
                 return _buildTask(snapshot.data[i - 1]);

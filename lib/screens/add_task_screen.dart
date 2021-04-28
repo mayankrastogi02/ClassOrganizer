@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:todo/helpers/database_helper.dart';
@@ -25,7 +26,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   TextEditingController _dateController = TextEditingController();
 
   final DateFormat _dateFormat = DateFormat('MMM dd, yyyy');
-  final List<String> _priorities = ['Low', 'Medium', 'High'];
+  final List<String> _priorities = ['Weekly', 'Biweekly', 'Triweekly'];
 
   _handleDatePicker() async {
     final DateTime date = await showDatePicker(
@@ -137,12 +138,17 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                         height: 50,
                         width: double.infinity,
                         decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            borderRadius: BorderRadius.circular(30)),
+                          borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                          gradient: LinearGradient(
+                            colors: [Colors.purple, Colors.red],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                        ),
                         child: FlatButton(
                           onPressed: () => launchURL(_link),
                           child: Text(
-                            'Go to Class Link -> $_link',
+                            'Go to Class Link',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -150,6 +156,34 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           ),
                         ),
                       ),
+                /*
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 0),
+                  height: 50,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(30)),
+                  child: RichText(
+                      text: TextSpan(children: [
+                    TextSpan(
+                        style: TextStyle(color: Colors.white),
+                        text: "Class Link"),
+                    TextSpan(
+                        style: TextStyle(color: Colors.white),
+                        text: "Click here",
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () async {
+                            var url = "https://www.google.com";
+                            if (await canLaunch(url)) {
+                              await launch(url);
+                            } else {
+                              throw 'Could not launch $url';
+                            }
+                          })
+                  ])),
+                ),
+                */
                 SizedBox(
                   height: 40,
                 ),
@@ -237,12 +271,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           }).toList(),
                           style: TextStyle(fontSize: 18),
                           decoration: InputDecoration(
-                              labelText: 'Priority',
+                              labelText: 'Class Frequency',
                               labelStyle: TextStyle(fontSize: 18),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10))),
                           validator: (input) => _priority == null
-                              ? "Please Select a priority level"
+                              ? "Please Select a class frequency"
                               : null,
                           onChanged: (value) {
                             setState(() {
