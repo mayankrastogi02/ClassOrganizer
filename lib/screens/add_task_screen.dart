@@ -26,7 +26,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   TextEditingController _dateController = TextEditingController();
 
   final DateFormat _dateFormat = DateFormat('MMM dd, yyyy');
-  final List<String> _priorities = ['Weekly', 'Biweekly', 'Triweekly'];
+  final List<String> _priorities = ['High', 'Medium', 'Low'];
 
   _handleDatePicker() async {
     final DateTime date = await showDatePicker(
@@ -128,9 +128,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     color: Theme.of(context).primaryColor,
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+
+                //Class Link Button
+                /*
                 widget.task == null
                     ? SizedBox.shrink()
                     : Container(
@@ -148,7 +148,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                         child: FlatButton(
                           onPressed: () => launchURL(_link),
                           child: Text(
-                            'Go to Class Link',
+                            'Go to Link',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -156,34 +156,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           ),
                         ),
                       ),
-                /*
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 0),
-                  height: 50,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(30)),
-                  child: RichText(
-                      text: TextSpan(children: [
-                    TextSpan(
-                        style: TextStyle(color: Colors.white),
-                        text: "Class Link"),
-                    TextSpan(
-                        style: TextStyle(color: Colors.white),
-                        text: "Click here",
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () async {
-                            var url = "https://www.google.com";
-                            if (await canLaunch(url)) {
-                              await launch(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
-                          })
-                  ])),
-                ),
-                */
+
+                      */
+
                 SizedBox(
                   height: 40,
                 ),
@@ -227,7 +202,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           onTap: _handleDatePicker,
                           style: TextStyle(fontSize: 18),
                           decoration: InputDecoration(
-                              labelText: 'Date',
+                              labelText: 'Due Date',
                               labelStyle: TextStyle(fontSize: 18),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10))),
@@ -243,13 +218,14 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                         child: TextFormField(
                           style: TextStyle(fontSize: 18),
                           decoration: InputDecoration(
-                              labelText: 'Link',
+                              labelText: 'Link (Optional)',
                               labelStyle: TextStyle(fontSize: 18),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10))),
-                          validator: (input) => input.trim().isEmpty
+                          /* validator: (input) => input.trim().isEmpty
                               ? "Please enter a class link"
                               : null,
+                          */
                           onSaved: (input) => _link = input,
                           initialValue: _link,
                         ),
@@ -271,12 +247,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           }).toList(),
                           style: TextStyle(fontSize: 18),
                           decoration: InputDecoration(
-                              labelText: 'Class Frequency',
+                              labelText: 'Urgency',
                               labelStyle: TextStyle(fontSize: 18),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10))),
                           validator: (input) => _priority == null
-                              ? "Please Select a class frequency"
+                              ? "Please Select a urgency"
                               : null,
                           onChanged: (value) {
                             setState(() {

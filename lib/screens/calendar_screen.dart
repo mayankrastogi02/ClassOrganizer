@@ -15,9 +15,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 20),
         child: SfCalendar(
-            view: CalendarView.month,
-            firstDayOfWeek: 1,
-            dataSource: ClassDataSource(getAppointments())),
+          view: CalendarView.month,
+          firstDayOfWeek: 1,
+          // dataSource: ClassDataSource(getAppointments()
+          // )
+        ),
       ),
     );
   }

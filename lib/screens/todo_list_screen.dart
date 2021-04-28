@@ -99,34 +99,35 @@ class _TodoListScreenState extends State<TodoListScreen> {
         child: Icon(Icons.add),
       ),
       body: FutureBuilder(
-          future: _taskList,
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+        future: _taskList,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
 
-            final int completedTaskCount = snapshot.data
-                .where((Task task) => task.status == 1)
-                .toList()
-                .length;
+          final int completedTaskCount = snapshot.data
+              .where((Task task) => task.status == 1)
+              .toList()
+              .length;
 
-            return ListView.builder(
-              padding: EdgeInsets.symmetric(vertical: 80),
-              itemCount: 1 + snapshot.data.length,
-              itemBuilder: (BuildContext context, int i) {
-                if (i == 0) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                    child: Column(children: [
+          return ListView.builder(
+            padding: EdgeInsets.symmetric(vertical: 60),
+            itemCount: 1 + snapshot.data.length,
+            itemBuilder: (BuildContext context, int i) {
+              if (i == 0) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                  child: Column(
+                    children: [
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Column(
                             children: [
                               Text(
-                                'Classes',
+                                'Homeworks',
                                 style: TextStyle(
                                   fontSize: 40,
                                   color: Theme.of(context).primaryColor,
@@ -177,14 +178,19 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                 fontWeight: FontWeight.w600),
                           ),
                         ],
-                      )
-                    ]),
-                  );
-                }
-                return _buildTask(snapshot.data[i - 1]);
-              },
-            );
-          }),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  ),
+                );
+              }
+              return _buildTask(snapshot.data[i - 1]);
+            },
+          );
+        },
+      ),
     );
   }
 }
