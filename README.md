@@ -8,14 +8,13 @@ ONE CLICK (well actually two) and you're in the class.
 
 <ol>
   <li>Adding Custom Courses
-   <li>Direct links to class meetings
-     <li>Calendar Management System (yet to be implemented)
-       <li>Simplified modification to courses
-         <li>Recurring events compatibility (yet to be implemented)
-     </ol>
+  <li>Direct links to class meetings
+  <li>Calendar Management System (yet to be implemented)
+  <li>Simplified modification to courses
+   <li>Recurring events compatibility (yet to be implemented)
+</ol>
 
-
-## Instructions
+## 📘 Instructions
 
 This project is a starting point for a Flutter application.
 <ol>
@@ -23,8 +22,9 @@ This project is a starting point for a Flutter application.
    <li>Open the folder in a IDE compatible with flutter
      <li>Run main.dart
        <li>Enjoy!
+         </ol>
          
-## Additional Information
+## 📚 Additional Information
 
 A few resources to get you started if this is your first Flutter project:
 
