@@ -135,39 +135,41 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
                 //Class Link Button
 
-                (widget.task.link == null) || (widget.task.link == '')
+                (widget.task == null) // || (widget.task.link == '')
                     ? SizedBox.shrink()
-                    : Column(
-                        children: [
-                          SizedBox(
-                            height: 40,
-                          ),
-                          Container(
-                            margin: EdgeInsets.symmetric(vertical: 0),
-                            height: 50,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(24.0)),
-                              gradient: LinearGradient(
-                                colors: [Colors.purple, Colors.red],
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
+                    : (widget.task.link == '')
+                        ? SizedBox.shrink()
+                        : Column(
+                            children: [
+                              SizedBox(
+                                height: 40,
                               ),
-                            ),
-                            child: FlatButton(
-                              onPressed: () => launchURL(_link),
-                              child: Text(
-                                'Go to Link',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                              Container(
+                                margin: EdgeInsets.symmetric(vertical: 0),
+                                height: 50,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(24.0)),
+                                  gradient: LinearGradient(
+                                    colors: [Colors.purple, Colors.red],
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight,
+                                  ),
+                                ),
+                                child: FlatButton(
+                                  onPressed: () => launchURL(_link),
+                                  child: Text(
+                                    'Go to Link',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
                               ),
-                            ),
+                            ],
                           ),
-                        ],
-                      ),
 
                 SizedBox(
                   height: 40,
