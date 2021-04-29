@@ -1,4 +1,4 @@
-# :pencil: Class Organizer
+# :pencil: Homework Planner
 
 A flutter app to organize online classes.
 Using this app you can directly access links to your online classes without having to navigate all around your course management softwares.
@@ -7,8 +7,8 @@ ONE CLICK (well actually two) and you're in the class.
 ## 👨‍💻 Features Include
 
 <ol>
-  <li>Adding Custom Courses
-  <li>Direct links to class meetings
+  <li>Adding Custom homeworks
+  <li>Links to helpful resources
   <li>Calendar Management System (yet to be implemented)
   <li>Simplified modification to courses
    <li>Recurring events compatibility (yet to be implemented)
