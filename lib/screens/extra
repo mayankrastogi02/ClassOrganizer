@@ -49,6 +49,30 @@ class CalendarScreen extends StatefulWidget {
   CalendarScreenState createState() => CalendarScreenState();
 }
 
+
+
+
+
+
+class MyApp extends MyApp {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return SplashScreen(
+      seconds: 3,
+      backgroundColor: Colors.white,
+      image: Image.asset('assets/loading.gif'),
+      loaderColor: Colors.white,
+      photoSize: 150.0,
+      navigateAfterSeconds: MainScreen(),
+    );
+  }
+}
+
 class CalendarScreenState extends State<CalendarScreen> {
   Calendar calendar = new Calendar(title: "My Calendar", id: "calendarID");
 

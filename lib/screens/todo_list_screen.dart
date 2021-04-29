@@ -103,7 +103,9 @@ class _TodoListScreenState extends State<TodoListScreen> {
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.white,
+              ),
             );
           }
 
