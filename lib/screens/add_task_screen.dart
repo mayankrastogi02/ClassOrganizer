@@ -114,55 +114,65 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 80),
+            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    Icons.arrow_back,
-                    size: 30,
-                    color: Theme.of(context).primaryColor,
-                  ),
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.arrow_back,
+                        size: 30,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                  ],
                 ),
 
                 //Class Link Button
-                /*
-                widget.task == null
-                    ? SizedBox.shrink()
-                    : Container(
-                        margin: EdgeInsets.symmetric(vertical: 0),
-                        height: 50,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                          gradient: LinearGradient(
-                            colors: [Colors.purple, Colors.red],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                          ),
-                        ),
-                        child: FlatButton(
-                          onPressed: () => launchURL(_link),
-                          child: Text(
-                            'Go to Link',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
 
-                      */
+                (widget.task.link == null) || (widget.task.link == '')
+                    ? SizedBox.shrink()
+                    : Column(
+                        children: [
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(vertical: 0),
+                            height: 50,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(24.0)),
+                              gradient: LinearGradient(
+                                colors: [Colors.purple, Colors.red],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                              ),
+                            ),
+                            child: FlatButton(
+                              onPressed: () => launchURL(_link),
+                              child: Text(
+                                'Go to Link',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
 
                 SizedBox(
                   height: 40,
                 ),
-                Text(widget.task == null ? 'Add Class' : 'Update Class',
+                Text(widget.task == null ? 'Add Homework' : 'Update Homework',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 30,

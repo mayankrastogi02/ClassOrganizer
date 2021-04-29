@@ -155,9 +155,9 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                       onPressed: () {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(
+                                          CupertinoPageRoute(
                                               builder: (context) =>
-                                                  CalendarScreen()),
+                                                  HomeCalendarPage()),
                                         );
                                       }),
                                 ),
