@@ -25,6 +25,10 @@ This project is a starting point for a Flutter application.
          </ol>
          
 ## 📑 Demo
+| ![Image](https://raw.githubusercontent.com/aleksanderwozniak/table_calendar/assets/table_calendar_styles.gif) | ![Image](https://raw.githubusercontent.com/aleksanderwozniak/table_calendar/assets/table_calendar_builders.gif) |
+| :------------: | :------------: |
+| **TableCalendar** with custom styles | **TableCalendar** with custom builders |
+
          
 ## 📚 Additional Information
 
