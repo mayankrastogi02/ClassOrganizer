@@ -24,10 +24,12 @@ This project is a starting point for a Flutter application.
        <li>Enjoy!
          </ol>
          
-## 📑 Demo
-| ![Image](https://raw.githubusercontent.com/aleksanderwozniak/table_calendar/assets/table_calendar_styles.gif) | ![Image](https://raw.githubusercontent.com/aleksanderwozniak/table_calendar/assets/table_calendar_builders.gif) |
+## 📑 <a href="https://github.com/mayankrastogi02/ClassOrganizer/tree/master/demo">Demo</a>
+| ![Image](https://github.com/mayankrastogi02/ClassOrganizer/blob/master/demo/demo-movie_CToGmrhT_zYyf.gif) | ![Image](https://github.com/mayankrastogi02/ClassOrganizer/blob/master/demo/Add-Homework-Page.JPG) | 
 | :------------: | :------------: |
-| **TableCalendar** with custom styles | **TableCalendar** with custom builders |
+| Demo | Add Homework Page |
+| ![Image](https://github.com/mayankrastogi02/ClassOrganizer/blob/master/demo/HomePage.JPG) | ![Image](https://github.com/mayankrastogi02/ClassOrganizer/blob/master/demo/Calendar-Page.JPG) | 
+| Home Page | Calendar Page |
 
          
 ## 📚 Additional Information
