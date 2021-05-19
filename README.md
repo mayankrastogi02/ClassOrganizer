@@ -13,6 +13,14 @@ ONE CLICK (well actually two) and you're in the class.
   <li>Simplified modification to courses
    <li>Recurring events compatibility (yet to be implemented)
 </ol>
+         
+## 📑 <a href="https://github.com/mayankrastogi02/ClassOrganizer/tree/master/demo">Demo</a>
+| ![Image](https://github.com/mayankrastogi02/ClassOrganizer/blob/master/demo/demo-movie_CToGmrhT_zYyf.gif) | ![Image](https://github.com/mayankrastogi02/ClassOrganizer/blob/master/demo/Add-Homework-Page.JPG) | 
+| :------------: | :------------: |
+| Demo | Add Homework Page |
+| ![Image](https://github.com/mayankrastogi02/ClassOrganizer/blob/master/demo/HomePage.JPG) | ![Image](https://github.com/mayankrastogi02/ClassOrganizer/blob/master/demo/Calendar-Page.JPG) | 
+| Home Page | Calendar Page |
+
 
 ## 📘 Instructions
 
@@ -24,13 +32,6 @@ This project is a starting point for a Flutter application.
        <li>Enjoy!
          </ol>
          
-## 📑 <a href="https://github.com/mayankrastogi02/ClassOrganizer/tree/master/demo">Demo</a>
-| ![Image](https://github.com/mayankrastogi02/ClassOrganizer/blob/master/demo/demo-movie_CToGmrhT_zYyf.gif) | ![Image](https://github.com/mayankrastogi02/ClassOrganizer/blob/master/demo/Add-Homework-Page.JPG) | 
-| :------------: | :------------: |
-| Demo | Add Homework Page |
-| ![Image](https://github.com/mayankrastogi02/ClassOrganizer/blob/master/demo/HomePage.JPG) | ![Image](https://github.com/mayankrastogi02/ClassOrganizer/blob/master/demo/Calendar-Page.JPG) | 
-| Home Page | Calendar Page |
-
          
 ## 📚 Additional Information
 
